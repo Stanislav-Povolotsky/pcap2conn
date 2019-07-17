@@ -52,7 +52,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="README.md">
+    <None Include="..\README.md">
       <Filter>docs</Filter>
     </None>
   </ItemGroup>
