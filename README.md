@@ -1,4 +1,4 @@
-pcap2conn
+# pcap2conn
 ==============
 
 pcap2conn (https://github.com/Stanislav-Povolotsky/pcap2conn) is based on TcpReassembly example from PcapPlusPlus https://github.com/seladb/PcapPlusPlus
@@ -21,7 +21,7 @@ Main features and capabilities:
 - Set a directory to write files to (default is current directory)
 
 
-Using the utility
+# Using the utility
 -----------------
 
 pcap2conn [-hvlcmsdj] [-r input_file] [-i interface] [-o output_dir] [-e bpf_filter] [-f max_files]
@@ -42,3 +42,13 @@ Options:
     -v            : Displays the current version and exists
     -h            : Display this help message and exit
 
+### Examples:
+Example 1: capturing live traffic, extracting and displaying only HTTP-connections
+```
+pcap2conn -i \Device\NPF_{YOURGUID-GUID-GUID-GUID-GUIDGUIDGUID} -c -e "tcp port 80"
+```
+ * (-i) live capture on selected network interface  
+ * (-c) output to the screen  
+ * (-e) include only HTTP traffic  
+  
+![How it works](https://user-images.githubusercontent.com/19610545/61442187-cf7b8500-a94f-11e9-8372-05e7c6629ace.gif)
