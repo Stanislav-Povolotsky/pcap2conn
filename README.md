@@ -1,5 +1,4 @@
 # pcap2conn
-==============
 
 pcap2conn (https://github.com/Stanislav-Povolotsky/pcap2conn) is based on TcpReassembly example from PcapPlusPlus https://github.com/seladb/PcapPlusPlus
 
@@ -43,12 +42,21 @@ Options:
     -h            : Display this help message and exit
 
 ### Examples:
-Example 1: capturing live traffic, extracting and displaying only HTTP-connections
+#### Example 1: capturing live traffic, extracting and displaying only HTTP-connections
 ```
 pcap2conn -i \Device\NPF_{YOURGUID-GUID-GUID-GUID-GUIDGUIDGUID} -c -e "tcp port 80"
 ```
- * (-i) live capture on selected network interface  
- * (-c) output to the screen  
- * (-e) include only HTTP traffic  
+ * (-i interface) live capture on selected network interface  
+ * (-c) output to the console
+ * (-e) include only HTTP-connections
   
 ![How it works](https://user-images.githubusercontent.com/19610545/61442187-cf7b8500-a94f-11e9-8372-05e7c6629ace.gif)
+
+#### Example 2: extracting connections from PCAP-file
+```
+pcap2conn -r data.pcapng -e "tcp port 23"
+```
+ * (-r input_file) read packets from file   
+ * (-e) include only TELNET-connections
+  
+![How it works](https://user-images.githubusercontent.com/19610545/61617950-758efe00-ac74-11e9-8414-345ac6ab2f8b.gif)
