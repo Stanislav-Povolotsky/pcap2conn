@@ -63,7 +63,7 @@ pcap2conn -r data.pcapng -e "tcp port 23"
 
 #### Example 3: extracting connections from PCAP-file to JSON files and replaying extracted dump  
 ```
-pcap2conn -r data.pcapng -e "tcp port 23" *-j*
+pcap2conn -r data.pcapng -e "tcp port 23" -j
 python json_dump_replay_tcp_server.py extracted-json-dump.json
 ```
  * (-r input_file) read packets from file   
