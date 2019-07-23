@@ -50,7 +50,7 @@ pcap2conn -i \Device\NPF_{YOURGUID-GUID-GUID-GUID-GUIDGUIDGUID} -c -e "tcp port 
  * (-c) output to the console
  * (-e) include only HTTP-connections
   
-![Example 1: capturing live traffic, extracting and displaying only HTTP-connections](https://user-images.githubusercontent.com/19610545/61442187-cf7b8500-a94f-11e9-8372-05e7c6629ace.gif)
+![Example 1: capturing live traffic, extracting and displaying only HTTP-connections](https://user-images.githubusercontent.com/19610545/61699959-86a74000-ad44-11e9-9859-43ddc83e2055.gif)
 
 #### Example 2: extracting connections from PCAP-file to text files
 ```
