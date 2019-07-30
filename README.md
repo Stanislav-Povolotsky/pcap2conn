@@ -48,7 +48,7 @@ pcap2conn -i \Device\NPF_{YOURGUID-GUID-GUID-GUID-GUIDGUIDGUID} -c -e "tcp port 
 ```
  * (-i interface) live capture on selected network interface  
  * (-c) output to the console
- * (-e) include only HTTP-connections
+ * (-e "tcp port 80") include only HTTP-connections
   
 ![Example 1: capturing live traffic, extracting and displaying only HTTP-connections](https://user-images.githubusercontent.com/19610545/61699959-86a74000-ad44-11e9-9859-43ddc83e2055.gif)
 
@@ -57,7 +57,7 @@ pcap2conn -i \Device\NPF_{YOURGUID-GUID-GUID-GUID-GUIDGUIDGUID} -c -e "tcp port 
 pcap2conn -r data.pcapng -e "tcp port 23"
 ```
  * (-r input_file) read packets from file   
- * (-e) include only TELNET-connections
+ * (-e "tcp port 23") include only TELNET-connections
   
 ![Example 2: extracting connections from PCAP-file to text files](https://user-images.githubusercontent.com/19610545/61617950-758efe00-ac74-11e9-8414-345ac6ab2f8b.gif)
 
@@ -67,7 +67,7 @@ pcap2conn -r data.pcapng -e "tcp port 23" -j
 python json_dump_replay_tcp_server.py extracted-json-dump.json
 ```
  * (-r input_file) read packets from file   
- * (-e "filter") include only TELNET-connections
+ * (-e "tcp port 23") include only TELNET-connections
  * (-j) save reassembled data chunks in JSON format
   
 ![Example 3: extracting connections from PCAP-file to JSON files and replaying extracted dump](https://user-images.githubusercontent.com/19610545/61697281-983a1900-ad3f-11e9-917e-f4d88c603aa9.gif)  
