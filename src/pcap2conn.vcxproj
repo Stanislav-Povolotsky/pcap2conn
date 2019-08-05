@@ -9,6 +9,14 @@
       <Configuration>Debug</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseMT|Win32">
+      <Configuration>ReleaseMT</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseMT|x64">
+      <Configuration>ReleaseMT</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
@@ -45,7 +53,21 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
@@ -69,7 +91,15 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="PcapPlusPlusPropertySheet.props" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="PcapPlusPlusPropertySheet.props" />
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="PcapPlusPlusPropertySheet.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="PcapPlusPlusPropertySheet.props" />
   </ImportGroup>
@@ -95,10 +125,24 @@
     <OutDir>$(ProjectBinOutDir)\Release\x86\</OutDir>
     <IntDir>$(ProjectBinOutDir)\Intermediate\Release\x86\</IntDir>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(PcapPlusPlusHomeMT)\Dist\header;$(WinPcapHome)\Include;$(PThreadWin32HomeMT)\Pre-built.2.MT\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(PcapPlusPlusHomeMT)\Dist\x86;$(PThreadWin32HomeMT)\Pre-built.2.MT\lib\x86;$(WinPcapHome)\Lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(ProjectBinOutDir)\Release\x86\</OutDir>
+    <IntDir>$(ProjectBinOutDir)\Intermediate\Release\x86\</IntDir>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(PcapPlusPlusHome)\header;$(WinPcapHome)\Include;$(PThreadWin32Home)\Pre-built.2\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(PcapPlusPlusHome)\x64\Release;$(PThreadWin32Home)\Pre-built.2\lib\x64;$(WinPcapHome)\Lib\x64;$(LibraryPath)</LibraryPath>
+    <OutDir>$(ProjectBinOutDir)\Release\x64\</OutDir>
+    <IntDir>$(ProjectBinOutDir)\Intermediate\Release\x64\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(PcapPlusPlusHomeMT)\Dist\header;$(WinPcapHome)\Include;$(PThreadWin32HomeMT)\Pre-built.2.MT\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(PcapPlusPlusHomeMT)\Dist\x64;$(PThreadWin32HomeMT)\Pre-built.2.MT\lib\x64;$(WinPcapHome)\Lib\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(ProjectBinOutDir)\Release\x64\</OutDir>
     <IntDir>$(ProjectBinOutDir)\Intermediate\Release\x64\</IntDir>
   </PropertyGroup>
@@ -164,6 +208,31 @@
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(GetOptHome)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Ws2_32.lib;IPHLPAPI.lib;wpcap.lib;Packet.lib;pthreadVC2.lib;Common++.lib;Packet++.lib;Pcap++.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -188,10 +257,37 @@
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Full</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WINx64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>$(GetOptHome)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Ws2_32.lib;IPHLPAPI.lib;wpcap.lib;Packet.lib;pthreadVC2.lib;Common++.lib;Packet++.lib;Pcap++.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\libs\getopt-for-windows\getopt.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseMT|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="IPUtilsEx.cpp" />
     <ClCompile Include="NetFlowReassemblyTool.cpp" />

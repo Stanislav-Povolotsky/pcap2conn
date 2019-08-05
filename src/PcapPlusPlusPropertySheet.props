@@ -3,8 +3,10 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
     <PcapPlusPlusHome>$(ProjectDir)..\libs\pcapplusplus-19.04-windows-vs2015</PcapPlusPlusHome>
+    <PcapPlusPlusHomeMT>$(ProjectDir)..\libsMT\PcapPlusPlus-19.04</PcapPlusPlusHomeMT>
     <WinPcapHome>$(ProjectDir)..\libs\WpdPack-4.1.2</WinPcapHome>
     <PThreadWin32Home>$(ProjectDir)..\libs\pthreads-2.9.1</PThreadWin32Home>
+    <PThreadWin32HomeMT>$(ProjectDir)..\libsMT\pthreads-w32-2-9-1-release</PThreadWin32HomeMT>
     <GetOptHome>$(ProjectDir)..\libs\getopt-for-windows</GetOptHome>
     <ProjectBinOutDir>$(ProjectDir)..\bin</ProjectBinOutDir>
   </PropertyGroup>
