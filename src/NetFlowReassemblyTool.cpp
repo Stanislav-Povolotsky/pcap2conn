@@ -22,6 +22,7 @@
  */
 
 #include "NetFlowReassembler.h"
+#include <getopt.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <map>
@@ -37,7 +38,6 @@
 #include "SystemUtils.h"
 #include "PcapPlusPlusVersion.h"
 #include "LRUList.h"
-#include <getopt.h>
 #ifdef _WIN32
 #include <direct.h>
 #endif
@@ -772,12 +772,39 @@ void doTcpReassemblyOnLiveTraffic(PcapLiveDevice* dev, NetFlowReassembler& tcpRe
     finalize_and_show_stats(tcpReassembly);
 }
 
+void InitDLLs()
+{
+#ifdef _WIN32
+    WCHAR systemDir[MAX_PATH + 2];
+    size_t nLen = ::GetSystemDirectoryW(systemDir, _countof(systemDir) - 2);
+    systemDir[nLen] = L'\\';
+    systemDir[nLen + 1] = 0;
+    std::wstring wsSystemDir(systemDir);
+
+    static const WCHAR* arRequiredDLLs[] = 
+    {
+        L"wpcap.dll",
+        L"packet.dll"
+    };
+
+    for (auto wszDLL : arRequiredDLLs)
+    {
+        std::wstring wsDLL = wsSystemDir + wszDLL;
+        HMODULE hMod = LoadLibraryW(wsDLL.c_str());
+        if (!hMod) {
+            std::wcerr << L"Unable to load library " << wszDLL << L". Please install Npcap or WinPcap." << std::endl;
+            exit(2);
+        }
+    }
+#endif
+}
 
 /**
  * main method of this utility
  */
 int main(int argc, char* argv[])
 {
+    InitDLLs();
     AppName::init(argc, argv);
 
     std::string interfaceNameOrIP = "";
